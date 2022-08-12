@@ -5,6 +5,8 @@
 package com.mycompany.performancecomparison;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +26,9 @@ public class Writer extends Thread {
             int randomId = rd.nextInt(0, Database.MAX_USER_ID + 1);
             //write operation.
             database.addShares(randomId, rd.nextInt(1, 100));
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {Logger.getLogger(Writer.class.getName()).log(Level.SEVERE, null, ex);}
         }
     }
     
