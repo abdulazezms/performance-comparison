@@ -15,7 +15,8 @@ public class Main {
     static final int NUMBER_OF_SUBSCRIBERS = (int)Math.pow(10, 6);
     static final int MAX_NUMBER_OF_OPERATIONS = (int)Math.pow(10, 8);
     static final int READER_THREADS = 7;
-
+    
+    
     public static void main(String[] args) throws InterruptedException {
         Subscriber [] subscribers = new Subscriber[NUMBER_OF_SUBSCRIBERS];
         for(int i = 0; i < subscribers.length; i++){
