@@ -6,6 +6,7 @@ package com.mycompany.performancecomparison;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  *
@@ -14,13 +15,17 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Database {
     
     private Subscriber [] subscribers;
-    Lock lock;
+    ReentrantReadWriteLock lock;
+    Lock readLock;
+    Lock writeLock;
     public static int MAX_OPERATIONS;
     public static int MAX_USER_ID;
 
     public Database(Subscriber [] subscribers, int maxOperations){
         this.subscribers = subscribers;
-        this.lock = new ReentrantLock();
+        this.lock = new ReentrantReadWriteLock();
+        this.readLock = lock.readLock();
+        this.writeLock = lock.writeLock();
         MAX_OPERATIONS = maxOperations;
         MAX_USER_ID = subscribers.length - 1;
     }
@@ -29,22 +34,22 @@ public class Database {
     //This method is called by a writer thread.
     public void addShares(int subscriberId, long shares){
         try{
-            this.lock.lock();
+            this.writeLock.lock();
             this.subscribers[subscriberId].addShares(shares);
         }
         finally{
-            this.lock.unlock();
+            this.writeLock.unlock();
         }
     }
     
     //This method is called by a reader thread.
     public long getSubscriberShares(int subscriberId){
         try{
-            this.lock.lock();
+            this.readLock.lock();
             return this.subscribers[subscriberId].getShares();
         }
         finally{
-            this.lock.unlock();
+            this.readLock.unlock();
         }
     }
 

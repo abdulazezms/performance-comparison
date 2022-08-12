@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class Main {
     static final int NUMBER_OF_SUBSCRIBERS = (int)Math.pow(10, 6);
-    static final int MAX_NUMBER_OF_OPERATIONS = (int)Math.pow(10, 8);
+    static final int MAX_NUMBER_OF_OPERATIONS = (int)Math.pow(10, 7);
     static final int READER_THREADS = 7;
 
     public static void main(String[] args) throws InterruptedException {
