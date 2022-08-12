@@ -4,6 +4,8 @@
  */
 package com.mycompany.performancecomparison;
 
+import java.util.Random;
+
 /**
  *
  * @author Abdulaziz Al-Alshaikh
@@ -16,6 +18,13 @@ public class Writer extends Thread {
     }
     
     @Override
-    public void run(){}
+    public void run(){
+        Random rd = new Random();
+        for(int i = 0; i < Database.MAX_OPERATIONS; i++) {
+            int randomId = rd.nextInt(0, Database.MAX_USER_ID + 1);
+            //write operation.
+            database.addShares(randomId, rd.nextInt(1, 100));
+        }
+    }
     
 }
