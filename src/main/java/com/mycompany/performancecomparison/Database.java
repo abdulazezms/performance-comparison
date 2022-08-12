@@ -31,7 +31,7 @@ public class Database {
     }
     
     
-    //This method is called by a writer thread.
+    //This method is called by a writer thread
     public void addShares(int subscriberId, long shares){
         try{
             this.writeLock.lock();
@@ -42,7 +42,7 @@ public class Database {
         }
     }
     
-    //This method is called by a reader thread.
+    //This method is called by a reader thread
     public long getSubscriberShares(int subscriberId){
         try{
             this.readLock.lock();
