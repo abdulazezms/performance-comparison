@@ -10,4 +10,12 @@ package com.mycompany.performancecomparison;
  */
 public class Database {
     
+    private Subscriber [] subscribers;
+    
+    public Database(Subscriber [] subscribers){
+        this.subscribers = subscribers;
+    }
+    
+    
+    
 }
