@@ -15,10 +15,14 @@ public class Database {
     
     private Subscriber [] subscribers;
     Lock lock;
-    
-    public Database(Subscriber [] subscribers){
+    public static int MAX_OPERATIONS;
+    public static int MAX_USER_ID;
+
+    public Database(Subscriber [] subscribers, int maxOperations){
         this.subscribers = subscribers;
         this.lock = new ReentrantLock();
+        MAX_OPERATIONS = maxOperations;
+        MAX_USER_ID = subscribers.length - 1;
     }
     
     
@@ -43,7 +47,6 @@ public class Database {
             this.lock.unlock();
         }
     }
-    
-    
+
     
 }
