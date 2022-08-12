@@ -24,7 +24,7 @@ public class Writer extends Thread {
         Random rd = new Random();
         for(int i = 0; i < Database.MAX_OPERATIONS; i++) {
             int randomId = rd.nextInt(0, Database.MAX_USER_ID + 1);
-            //write operation.
+            //write operation
             database.addShares(randomId, rd.nextInt(1, 100));
             try {
                 Thread.sleep(10);
