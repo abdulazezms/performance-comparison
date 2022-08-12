@@ -11,9 +11,10 @@ package com.mycompany.performancecomparison;
 public class Database {
     
     private Subscriber [] subscribers;
-    
-    public Database(Subscriber [] subscribers){
+    public static int MAX_OPERATIONS;
+    public Database(Subscriber [] subscribers, int maxOperations){
         this.subscribers = subscribers;
+        MAX_OPERATIONS = maxOperations;
     }
     
     

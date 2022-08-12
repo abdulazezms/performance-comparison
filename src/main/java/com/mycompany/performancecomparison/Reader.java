@@ -4,10 +4,20 @@
  */
 package com.mycompany.performancecomparison;
 
+import java.util.Random;
+
 /**
  *
  * @author Abdulaziz Al-Alshaikh
  */
-public class Reader {
+public class Reader extends Thread {
+    Database database;
+    
+    public Reader(Database database){
+        this.database = database;
+    }
+    
+    @Override
+    public void run(){}
     
 }
