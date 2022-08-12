@@ -18,6 +18,14 @@ public class Reader extends Thread {
     }
     
     @Override
-    public void run(){}
+    public void run(){
+        Random rd = new Random();
+        for(int i = 0; i < Database.MAX_OPERATIONS; i++) {
+            int randomId = rd.nextInt(0, Database.MAX_USER_ID + 1);
+            //read operation.
+            long shares = database.getSubscriberShares(randomId);
+            //System.out.println("shares of subscriber with id = " + randomId + " = " + shares");
+        }
+    }
     
 }
