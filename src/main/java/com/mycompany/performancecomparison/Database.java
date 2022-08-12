@@ -22,6 +22,27 @@ public class Database {
     }
     
     
+    //This method is called by a writer thread.
+    public void addShares(int subscriberId, long shares){
+        try{
+            this.lock.lock();
+            this.subscribers[subscriberId].addShares(shares);
+        }
+        finally{
+            this.lock.unlock();
+        }
+    }
+    
+    //This method is called by a reader thread.
+    public long getSubscriberShares(int subscriberId){
+        try{
+            this.lock.lock();
+            return this.subscribers[subscriberId].getShares();
+        }
+        finally{
+            this.lock.unlock();
+        }
+    }
     
     
     
